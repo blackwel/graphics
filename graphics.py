@@ -5,9 +5,9 @@ import sys, pygame, random
 def main():
     pygame.init()
 
-    size = width, height = 320, 240
-    speed = [10, 10]
-    speed2 = [10, 10]
+    size = width, height = 640, 480
+    speed = [7, 7]
+    speed2 = [7, 7]
     black = 0, 0, 0
 
     screen = pygame.display.set_mode(size)
@@ -29,17 +29,26 @@ def main():
         if ballrect.top < 0 or ballrect.bottom > height:
             speed[1] = -speed[1]
 
-        ballrect2 = ballrect2.move(speed)
+        ballrect2 = ballrect2.move(speed2)
         if ballrect2.left < 0 or ballrect2.right > width:
             speed2[0] = -speed2[0]
         if ballrect2.top < 0 or ballrect2.bottom > height:
             speed2[1] = -speed2[1]
 
+        if is_intersecting(ballrect,ballrect2):
+            speed1 = reflect(speed1)
+            speed2 = reflect(speed2)
 
         screen.fill(black)
         screen.blit(ball, ballrect)
         screen.blit(ball2, ballrect2)
         pygame.display.flip()
+
+def is_intersecting(rect1, rect2):
+    return False
+
+def reflect(speed):
+    return speed
 
 if __name__ == '__main__':
     main()
