@@ -5,7 +5,7 @@ import sys, pygame, random
 def main():
     pygame.init()
 
-    size = width, height = 800, 480
+    size = width, height = 1400, 900
     black = 0, 0, 0
 
     screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
